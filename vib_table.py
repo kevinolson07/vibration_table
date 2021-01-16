@@ -11,7 +11,7 @@ duty2 = .75
 duty3 = 1
 
 # PWM driver function
-def pwm_driver(duty, period):
+def pwm_driver(duty, dwell):
     for i in pwmFrequency: 
         timeHigh = duty*period
         GPIO.output(18,GPIO.HIGH)
@@ -26,12 +26,24 @@ def autoMode():
 
 # Manual mode Function
 def manualMode():
-    duty = int(input("Enter \'1\' for \'50%\' duty, \'2\' for \'75%\' duty or \'3\' for \'100%\' duty"))
+    duty = int(input("Enter \'1\' for \'50%\' duty, \'2\' for \'75%\' duty or \'3\' for \'100%\' duty: "))
+    if duty == 1 or duty = 2 or duty = 3:
+        if duty == 1:
+            duty = duty1
+        if duty == 2:
+            duty = duty2
+        if duty == 3:
+            duty = duty3
+        dwell = 0
+    else:
+        print("Value not valid")
+        
+    pwm_driver(duty, dwell)
 
 # User input 
 while True:
     try: 
-        mode = int(input("Enter \'1\' for auto mode or \'2\' for mnanual mode"))
+        mode = int(input("Enter \'1\' for auto mode or \'2\' for mnanual mode: "))
         if mode == 1:
             autoMode()
         elif mode == 2:
