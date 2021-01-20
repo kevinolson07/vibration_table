@@ -15,6 +15,7 @@ def pwm_driver(duty):
         GPIO.output(17,GPIO.HIGH)
         time.sleep(timeHigh)
         timeLow = (1-duty)*period
+        GPIO.output(17,GPIO.LOW)
         time.sleep(timeLow)
 
 # Auto mode function
