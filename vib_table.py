@@ -22,8 +22,9 @@ def pwm_driver(duty):
 def autoMode():
     dwell = int(input("Enter dwell time in seconds: "))
     cycles = int(input("Enter number of cycles: "))
-    for x in range(3):
-        for c in range(cycles):
+    
+    for c in range(cycles):
+        for x in range(3):
             for t in range(dwell):
                 pwm_driver(duty[x])
 
@@ -47,7 +48,7 @@ def manualMode():
 # User input 
 while True:
     try: 
-        mode = int(input("Enter \'1\' for auto mode or \'2\' for mnanual mode: "))
+        mode = int(input("Enter \'1\' for auto mode or \'2\' for manual mode: "))
         if mode == 1:
             autoMode()
         elif mode == 2:
